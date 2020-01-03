@@ -6,10 +6,10 @@ import java.util.Optional;
 public interface CrudInterface<T>  {
 
     List<T> findAll();
-    Optional<T> save(T entity);
-    Optional<T> findById(long id);
-    void delete(T entity);
-    void deleteById(long id);
+    Optional<T> save(T entidade);
+    Optional<T> findById(Long id);
+    void delete(T entidade);
+    void deleteById(Long id);
     long count();
 
 
