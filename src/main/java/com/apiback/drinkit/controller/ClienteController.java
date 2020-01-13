@@ -28,47 +28,47 @@ import io.swagger.annotations.ApiOperation;
 public class ClienteController {
 
     @Autowired
-    private ClienteService userService;
+    private ClienteService clienteService;
     
 	@ApiOperation(value = "Retorna uma lista de todos os Usuarios")
-    @GetMapping("/usuario")
+    @GetMapping("/clientes")
     public List<Cliente> getUsers() {
-        return userService.findAll();
+        return clienteService.findAll();
     }
 	
 	@ApiOperation(value = "Retorna unico usuário pelo ID")
-	@GetMapping("/usuario/{id}")
+	@GetMapping("/cliente/{id}")
 	public Optional<Cliente> getUserbyId(@PathVariable(value = "id") long id) {
-		return userService.findById(id);
+		return clienteService.findById(id);
 	}
 	
 	@ApiOperation(value = "Insere um novo usuário")
-    @PostMapping("/usuario")
+    @PostMapping("/cliente")
     public ResponseEntity<Cliente>
-    save(@Valid @RequestBody Cliente user) {
-        userService.save(user);
-        return ResponseEntity.ok(user);
+    save(@Valid @RequestBody Cliente cliente) {
+		clienteService.save(cliente);
+        return ResponseEntity.ok(cliente);
     }
 
 	@ApiOperation(value = "Atualiza um usuário")
-    @PutMapping("/usuario")
-    public ResponseEntity update(@Valid @RequestBody Cliente user) {
-        userService.save(user);
-        return ResponseEntity.ok().body(user);
+    @PutMapping("/cliente")
+    public ResponseEntity update(@Valid @RequestBody Cliente cliente) {
+		clienteService.save(cliente);
+        return ResponseEntity.ok().body(cliente);
     }
 
 	
 	@ApiOperation(value = "Deleta um usuário")
-    @DeleteMapping("/usuario")
-    public ResponseEntity<String> delete(@Valid @RequestBody Cliente user) {
-        userService.delete(user);
-       return  ResponseEntity.ok().body("User excluded ID: " + user.getCod_cliente());
+    @DeleteMapping("/cliente")
+    public ResponseEntity<String> delete(@Valid @RequestBody Cliente cliente) {
+		clienteService.delete(cliente);
+       return  ResponseEntity.ok().body("User excluded ID: " + cliente.getCod_cliente());
     }
 	
 	@ApiOperation(value = "Deleta um usuário pelo ID")
-    @DeleteMapping("/usuario/{id}")
+    @DeleteMapping("/cliente/{id}")
     public ResponseEntity<String> deleteById(@PathVariable Long id) {
-        userService.deleteById(id);
+		clienteService.deleteById(id);
         return ResponseEntity.ok().body("User excluded ID: " + id);
     }
 
